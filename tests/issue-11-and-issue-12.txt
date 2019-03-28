@@ -1,0 +1,25 @@
+
+
+
+sox  --type wav  --encoding signed-integer  -- issue-11.wav  -- issue-11_pcm.wav
+
+
+sox  --type wav  --encoding ms-adpcm  
+
+Audio types:
+
+WAV
+FLAC
+MP3
+
+Encodings:
+
+signed-integer
+unsigned-integer
+floating-point
+
+     $ sox --help
+    -t|--type FILETYPE       File type of audio
+    -e|--encoding ENCODING   Set encoding (ENCODING may be one of signed-integer,
+                             unsigned-integer, floating-point, mu-law, a-law,
+                             ima-adpcm, ms-adpcm, gsm-full-rate)

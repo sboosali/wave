@@ -1,0 +1,56 @@
+#!/bin/bash
+set -e
+set -u
+
+##################################################
+
+HELP="««« $(basename $0) INPUT »»»"
+
+##################################################
+
+INPUT="${1:?$HELP}"
+
+# ^ e.g. « audio.wav »
+
+OUTPUT="${INPUT}.pcm"
+
+# ^ e.g. « audio.pcm.wav » TODO
+
+##################################################
+
+echo ========================================
+echo
+
+echo "« sox »:"
+echo
+command -v sox
+
+echo
+echo ----------------------------------------
+echo
+
+echo '« $SOX_OPTS »:'
+echo
+echo "${SOX_OPTS:-∅}"
+
+echo
+echo ----------------------------------------
+echo
+
+echo "FILES:"
+echo
+echo "${INPUT}"
+echo "${OUTPUT}"
+
+echo
+echo ========================================
+echo
+
+sox   --type wav "${INPUT}"   --type wav --encoding signed-integer "${OUTPUT}"
+
+# sox   "${INPUT}" --type wav --encoding signed-integer   "${OUTPUT}" --type wav --encoding signed-integer
+# sox   --type wav --encoding signed-integer "${INPUT}"   --type wav --encoding signed-integer "${OUTPUT}"
+
+#sox -t ima -r 44100 -e ima-adpcm in.raw -e signed-integer -b 16 out.wav
+
+##################################################
